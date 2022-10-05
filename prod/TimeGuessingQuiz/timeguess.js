@@ -43,7 +43,7 @@ stop.addEventListener("click",
     stopTime = Date.now() - startTime;
     if(timer.textContent.search('00:10')!=-1){
       audio1.play();
-      document.body.style.backgroundImage='url(../img/fireworks.gif)';
+      document.body.style.backgroundImage='url(./img/fireworks.gif)';
     }else{
       audio2.play();
     }
