@@ -38,6 +38,7 @@ body{
         /* https://developer.mozilla.org/ja/docs/Web/CSS/background-size */
         /* https://developer.mozilla.org/ja/docs/Web/CSS/background */
     overflow: hidden;
+    background-attachment: fixed;
 }
 
 header, footer, h1, h2, h3, p, div, .container01, .filler01 {
