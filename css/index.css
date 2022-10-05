@@ -85,7 +85,7 @@ h2{
     border-radius: 0.5em 1.5em;
         /* https://developer.mozilla.org/ja/docs/Web/CSS/border-radius */
     background-color:rgba(245, 245, 245, 0.6);
-    box-shadow:0 0 0.5em rgb(73, 72, 72);
+    box-shadow:0 0 0.5em rgb(97, 97, 97);
         /* https://developer.mozilla.org/ja/docs/Web/CSS/box-shadow */
 }
 main > p {
