@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <meta name="description" content="Calculator">
+
+    <link rel="icon" href="img/calc.jpg">
+
+    <!-- Font Awesome Twitter,Facebookなどのアイコン用フォント index.cssよりも前に定義...index.css high priority -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Font Awesome animation -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.0.10/font-awesome-animation.css" type="text/css" media="all" />
+
+    <link rel="stylesheet" href="css/calculator.css">
+</head>
+
+<body>
+    <header>
+        <h1>Calculator</h1>
+    </header>
+
+    <div class="wrapper">
+        <div class="back">
+            <button id="btn99" class="back" type="button" onclick="history.back()">back</button>
+        </div>
+        <div class="f-container">
+            <div class="tag">加減乗除:</div>
+            <div class="f-item">
+                <input type="number" value="1" id="num1">
+            </div>
+            <div class="f-item">
+                <select id="calcType">
+                <option value="type-add">+</option>
+                <option value="type-subtraction">-</option>
+                <option value="type-multiply">x</option>
+                <option value="type-divide">÷</option>
+              </select>
+            </div>
+            <div class="f-item">
+                <input type="number" value="2" id="num2">
+            </div>
+
+            <div class="f-item">
+                <div id="btnEqual">=</div>
+            </div>
+            <div class="f-item">
+                <div id="result"></div>
+            </div>
+        </div>
+        <div class="hexConverter">
+            <div class="tag">進数変換</div>
+            <div class="table">
+                <div id="tag1">元進数タイプ選択:</div>
+                <label class="radio"><input type="radio" name="input_" value="2">2進数</label>
+                <label class="radio"><input type="radio" name="input_" value="8">8進数</label>
+                <label class="radio"><input type="radio" name="input_" value="10">10進数</label>
+                <label class="radio"><input type="radio" name="input_" value="16">16進数</label>
+                <select id="input_num" class="input-small">
+                    <option value="2">2進数</option>
+                    <option value="8">8進数</option>
+                    <option value="10" selected="">10進数</option>
+                    <option value="16">16進数</option>
+                </select>
+            </div>
+            <div class="input-prepend">
+                <span class="add-on">変換したい数値:</span><input id="input_value" type="text" value="" oninput="" placeholder="変換元の値">
+            </div>
+            <div class="table">
+                <div id="tag1">変換したいタイプ選択:</div>
+                <label class="radio"><input type="radio" name="output_" value="2">2進数</label>
+                <label class="radio"><input type="radio" name="output_" value="8">8進数</label>
+                <label class="radio"><input type="radio" name="output_" value="10">10進数</label>
+                <label class="radio"><input type="radio" name="output_" value="16">16進数</label>
+                <select id="output_num" class="output-small">
+                    <option value="2">2進数</option>
+                    <option value="8">8進数</option>
+                    <option value="10" selected="">10進数</option>
+                    <option value="16">16進数</option>
+                </select>
+            </div>
+            <div class="input-prepend">
+                <span class="add-on">変換した結果:</span><input type="text" id="output_value" placeholder="変換した結果">
+            </div>
+
+
+        </div>
+
+        <footer>
+            <p>
+                <!-- Font Awesome Twitter,Facebookなどのアイコン用フォント -->
+                <!-- https://fontawesome.com/v4.7.0/icons/ でアイコンを探せるよ。 -->
+                <!-- https://saruwakakun.com/html-css/basic/font-awesome#san2 アイコンの設定いろいろ -->
+                <!-- アイコンの大きさ -->
+                <i class="fa fa-globe font06-cog fa-spin" aria-hidden="true"></i>
+                <span class="mgn-01">copyright 2022 チンメイ</span>
+                <i class="fa fa-fighter-jet faa-passing animated font06" aria-hidden="true"></i>
+            </p>
+        </footer>
+
+        <script src="js/calculator.js"></script>
+</body>
+
+</html>
