@@ -173,4 +173,7 @@ footer> p {
     body{
         background-size: auto 812px;
     }
+    .container01-01 , .container01-02, .container01-03 , .container01-04 {
+        font-size: 0.65em;
+    }
 }
