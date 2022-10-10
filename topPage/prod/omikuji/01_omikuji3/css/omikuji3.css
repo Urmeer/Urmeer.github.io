@@ -32,27 +32,6 @@ header{
     text-shadow: 5px 5px 5px rgba(255,255,255,0.65);
     text-align: center;
 }
-ul{
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    width: 200px;
-}
-#o1 a{
-    display: block;
-    width: 150px;
-    height: 33px;
-    background-image:url(../img/btn\ red.png);
-    padding: 8px 16px;
-}
-#o2 a{
-    display: block;
-    width: 150px;
-    height: 33px;
-    background-image:url(../img/btn\ dark.png);
-    padding: 8px 16px;
-}
-
 .wrapper{
     position: relative;
     max-width: 100vw;
@@ -91,6 +70,18 @@ ul{
 }
 .omikujiPaper{
     animation: fadeDown 1.5s forwards;
+}
+.back{
+    text-align: left;
+}
+#btn99{
+    margin: 0.5em;
+    padding: 0.5em;
+    border-radius: 1em;
+    color: whitesmoke;
+    font-size: 1.5em;
+    background: rgb(26, 212, 212);
+    cursor: pointer; 
 }
 footer{
     position: fixed;

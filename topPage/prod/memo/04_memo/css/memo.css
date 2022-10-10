@@ -90,6 +90,7 @@ textarea::placeholder{
   text-align: left;
 }
 #save{
+  margin: 0.5em;
   padding: 0.5em;
   border-radius: 0.3em;
   color: whitesmoke;
