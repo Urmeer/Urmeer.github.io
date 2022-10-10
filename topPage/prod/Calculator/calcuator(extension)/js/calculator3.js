@@ -196,7 +196,7 @@ function sign(){
     elementResult.innerHTML=Number(-str);
     }
     else{
-    elementResult.innerHTML="エラー";
+    elementResult.innerHTML="error";
     }
 }
 
@@ -212,19 +212,19 @@ function equal(){
         str=str.replace(/sin/g,'Math.round(Math.sin');
         str+="*1000000)/1000000";
         elementCalcLog.innerHTML=str0.concat("=");
-        elementResult.innerHTML=eval(str);
+        elementResult.innerHTML=evalPro(str);
     }
     else if(str.indexOf("cos")>=0){
         str=str.replace(/cos/g,'Math.round(Math.cos');
         str+='*1000000)/1000000';
         elementCalcLog.innerHTML=str0.concat("=");
-        elementResult.innerHTML=eval(str);
+        elementResult.innerHTML=evalPro(str);
     }
     else if(str.indexOf("tan")>=0){
         str=str.replace(/tan/g,'Math.round(Math.tan');
         str+="*1000000)/1000000";
         elementCalcLog.innerHTML=str0.concat("=");
-        elementResult.innerHTML=eval(str);
+        elementResult.innerHTML=evalPro(str);
     }
     else if(str.indexOf("^")>=0){
         var pos=str0.indexOf('^');
@@ -232,7 +232,7 @@ function equal(){
 		var pow2=str0.substring(pos+1,str0.length+1);
 		var result=Math.pow(pow1, pow2);
 		elementCalcLog.innerHTML=str0.concat("=");
-		elementResult.innerHTML=eval(result);
+		elementResult.innerHTML=evalPro(result);
     }
     else if(str.indexOf("√")>=0){
         var pos=str0.indexOf('√');
@@ -241,37 +241,37 @@ function equal(){
 		if(pow1==''){
 			var result=Math.pow(pow2,0.5);
             elementCalcLog.innerHTML=str0.concat("=");
-            elementResult.innerHTML=eval(result);
+            elementResult.innerHTML=evalPro(result);
 		}
 		else{
 			var result=Math.pow(pow2, 1/pow1);
             elementCalcLog.innerHTML=str0.concat("=");
-            elementResult.innerHTML=eval(result);
+            elementResult.innerHTML=evalPro(result);
 		}
 	}
     else if(str.indexOf("ln")>=0){
 		var str=str0.replace(/ln/g,'Math.round(Math.log');
 		str+='*1000000)/1000000';
         elementCalcLog.innerHTML=str0.concat("=");
-        elementResult.innerHTML=eval(str);
+        elementResult.innerHTML=evalPro(str);
 	}
     else if(str.indexOf("log")>=0){
 		var str=str0.replace(/log/g,'Math.log');
 		str+= '/Math.log(10)';
 		elementCalcLog.innerHTML=str0.concat("=");
-        elementResult.innerHTML=eval(str);
+        elementResult.innerHTML=evalPro(str);
 	}
     else if(str.indexOf("%")>=0){
         var pos=str0.indexOf('%');
-            var pow1=str0.substring(pos-2,pos);
-            str=Number(pow1/100);
+        var pow1=str0.substring(pos-2,pos);
+        str+=Number(pow1/100);
         elementCalcLog.innerHTML=str0.concat("=");
-        elementResult.innerHTML=eval(str);
+        elementResult.innerHTML=evalPro(str);
     }
     else{
-		result=(eval(str));
+		result=(evalPro(str));
 		elementCalcLog.innerHTML=str0.concat("=");
-        elementResult.innerHTML=eval(result);
+        elementResult.innerHTML=evalPro(result);
 	}
     var m=elementResult.innerHTML
 	if(m=="Infinity")
@@ -279,7 +279,25 @@ function equal(){
 	else if(m=="-Infinity")
         elementResult.innerHTML="-∞";
 }
- 
+/*function sign(str,b){
+    var a=0;
+    for(a;a<b;a++){
+        if(isNaN(str.substring(a,a+1))){
+            return str.indexOf(a);
+        }
+    }
+}*/
+//evalPro()の代わり
+function evalPro(str){
+    var Fn=new Function("return "+str)();
+    if(isNaN(Fn)){
+        return "error";
+    }
+    else{
+        return Fn;
+    }
+}
+
 //htmlのスタイル変換
 function styleChange(){
 	if(document.getElementById('rows').style.display=='inline'){
