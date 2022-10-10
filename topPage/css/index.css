@@ -173,7 +173,7 @@ footer> p {
 /*******************************************************/
 @media screen and (max-width: 480px) {
     body{
-        background-size: auto 812px;
+        background-size: auto;
     }
     .container01-01 , .container01-02, .container01-03 , .container01-04 {
         font-size: 0.65em;
