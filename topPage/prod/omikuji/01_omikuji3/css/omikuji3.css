@@ -190,8 +190,7 @@ footer{
         font-size: 30px;
     }
     #btn1{
-       width:260px;
-       height:260px;
+       transform: scale(80%);
     }
     #omikujiText{
         margin:30px;
