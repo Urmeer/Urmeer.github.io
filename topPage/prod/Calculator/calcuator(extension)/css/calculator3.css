@@ -190,6 +190,7 @@ section {
 footer> p {
   position: absolute;/*←絶対位置*/
   bottom: 15px; /*下に固定*/
+  right: 0px;
   width: 100%;
   margin: 0px;
   padding: 1px;
