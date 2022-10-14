@@ -8,6 +8,7 @@ function(){
     }else{
         viewStorage();
         saveLocalStorage();
+        deletel();
     }
 },false
 );
@@ -43,12 +44,30 @@ function viewStorage(){
         const td1=document.createElement("td");
         const td2=document.createElement("td");
         const td3=document.createElement("td");
-        list.append(tr);
-        tr.append(td1);
-        tr.append(td2);
-        tr.append(td3);
+        list.appendChild(tr);
+        tr.appendChild(td1);
+        tr.appendChild(td2);
+        tr.appendChild(td3);
         td1.innerHTML="<input name='radio1' type='radio'>";
         td2.innerHTML=w_key;
         td3.innerHTML=localStorage.getItem(w_key);
     }
+}
+
+function deletel(){
+    let deletel=document.getElementById("delete");
+    deletel.addEventListener("click",
+    function(e){
+        e.preventDefault();
+        const list1=document.getElementById("list");
+        if(list1.row[0]){
+            console.log("error");
+        }
+        else{
+            list1.deleteRow(localStorage.length-1);
+        }
+        let w_key=localStorage.key(localStorage.length-1);
+        localStorage.removeItem(w_key);
+    },false
+    )
 }
