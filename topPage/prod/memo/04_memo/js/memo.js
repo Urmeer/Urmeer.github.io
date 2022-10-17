@@ -8,7 +8,8 @@ function(){
     }else{
         viewStorage();
         saveLocalStorage();
-        deletel();
+        choose();
+        delete1();
     }
 },false
 );
@@ -23,7 +24,7 @@ function saveLocalStorage(){
         if(key==""||value==""){
             window.alert("key,Memoは何れも必須です。");
             return;
-        }else{
+        }else{           
             localStorage.setItem(key, value);
             viewStorage();
             let w_msg="LocalStorageに"+key+" "+value+"を保存しました。";
@@ -54,20 +55,30 @@ function viewStorage(){
     }
 }
 
-function deletel(){
-    let deletel=document.getElementById("delete");
-    deletel.addEventListener("click",
+function choose(){
+    for(let i=2;i<localStorage.length*3;i++){
+    if(document.getElementsByTagName("input")[i].checked){
+        document.getElementById("textKey").value=document.getElementsByTagName("td")[i-1].innerHTML;
+        document.getElementById("textMemo").value=document.getElementsByTagName("td")[i].innerHTML;
+    }
+    }
+}
+
+
+function delete1(){
+    let delete1=document.getElementById("delete");
+    delete1.addEventListener("click",
     function(e){
         e.preventDefault();
         const list1=document.getElementById("list");
-        if(list1.row[0]){
-            console.log("error");
-        }
-        else{
+        if(localStorage.length>0){
+            let w_key=localStorage.key(localStorage.length-1);
+            localStorage.removeItem(w_key);
             list1.deleteRow(localStorage.length-1);
         }
-        let w_key=localStorage.key(localStorage.length-1);
-        localStorage.removeItem(w_key);
+        else{
+            console.log("error");
+        }
     },false
     )
 }
