@@ -57,7 +57,7 @@ function viewStorage() {
 }
 
 function choose() {
-    let radio1 = document.getElementsByName("radio1");
+    const radio1 = document.getElementsByName("radio1");
     for (let i = 0; i < localStorage.length; i++) {
         radio1[i].addEventListener("click",
             function() {
@@ -74,16 +74,16 @@ function choose() {
 function delete1() {
     let delete1 = document.getElementById("delete");
     delete1.addEventListener("click",
-        function(e) {
-            e.preventDefault();
+        function() {
             const list1 = document.getElementById("list");
-            if (localStorage.length > 0) {
-                let w_key = localStorage.key(localStorage.length - 1);
-                localStorage.removeItem(w_key);
-                list1.deleteRow(localStorage.length - 1);
-            } else {
-                console.log("error");
-            }
+            let w_key;
+            w_key=document.getElementsByTagName("td")[1].innerHTML;
+            console.log(w_key);
+            localStorage.removeItem(w_key);
+            list1.deleteRow(0);
+            choose();
+            document.getElementById("textKey").value = "";
+            document.getElementById("textMemo").value = "";
         }, false
     )
 }
