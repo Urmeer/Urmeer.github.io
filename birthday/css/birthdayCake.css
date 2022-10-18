@@ -390,7 +390,7 @@ html, body {
     width: 100%;
     top: -100px;
     opacity: 0;
-    font-size: 37px;
+    font-size: 36px;
     color: rgb(0, 0, 0);
 }
 
@@ -471,7 +471,7 @@ html, body {
     border: 2px solid #fff;
     -webkit-border: 1px solid #fff;
     border-radius: 30px;
-    font-size: 23px;
+    font-size: 2px;
     text-align: center;
     background: #ee9ca7;
     transition: all 0.8s;
@@ -509,4 +509,13 @@ a.lk2:hover {
     background-color: rgba(255, 255, 255, 0, 2);
     border: 2px solid #BBB;
     transition: all 0.8s;
+}
+@media screen and (max-width:480px) {
+    body{
+        transform: 75%;
+    }
+    .button-style1 {
+        top: 60%;
+        opacity: 0;
+    }
 }
