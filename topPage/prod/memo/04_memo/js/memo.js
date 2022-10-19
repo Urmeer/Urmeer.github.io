@@ -1,5 +1,8 @@
 "use strict";
 
+let tempi;
+let temps;
+let flag=0;
 window.addEventListener("DOMContentLoaded",
     function() {
         if (typeof localStorage === "undefined") {
@@ -64,6 +67,10 @@ function choose() {
                 if (radio1[i].checked) {
                     document.getElementById("textKey").value = document.getElementsByTagName("td")[3 * i + 1].innerHTML;
                     document.getElementById("textMemo").value = document.getElementsByTagName("td")[3 * i + 2].innerHTML;
+                    temps=document.getElementsByTagName("td")[3 * i + 1].innerHTML;
+                    console.log(i);
+                    tempi=i;
+                    flag=1;
                 }
             }, false
         )
@@ -73,17 +80,26 @@ function choose() {
 
 function delete1() {
     let delete1 = document.getElementById("delete");
+    const list1 = document.getElementById("list");
+    let w_key;
     delete1.addEventListener("click",
         function() {
-            const list1 = document.getElementById("list");
-            let w_key;
-            w_key=document.getElementsByTagName("td")[1].innerHTML;
-            console.log(w_key);
-            localStorage.removeItem(w_key);
-            list1.deleteRow(0);
-            choose();
-            document.getElementById("textKey").value = "";
-            document.getElementById("textMemo").value = "";
+            if(flag==0&&localStorage.length>0){
+                w_key=document.getElementsByTagName("td")[1].innerHTML;
+                localStorage.removeItem(w_key);
+                list1.deleteRow(0);
+                document.getElementById("textKey").value = "";
+                document.getElementById("textMemo").value = "";
+            }else if(flag==1&&localStorage.length>0){
+                w_key=temps;
+                localStorage.removeItem(w_key);
+                list1.deleteRow(tempi);
+                document.getElementById("textKey").value = "";
+                document.getElementById("textMemo").value = "";
+                choose();
+            }else{
+                window.alert("error");
+            }
         }, false
     )
 }
