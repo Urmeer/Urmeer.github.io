@@ -19,6 +19,7 @@ sans-serif;
 background-size:cover;
 background-image:url(../img/meteors.png);
 background-attachment: fixed;
+overflow: hidden;
 }
 p{
 margin: 0;
@@ -45,7 +46,7 @@ header{
     position: relative;
     margin: 20px auto;
     width: 250px;
-    height: 400px;
+    height: 300px;
     background-image: url(../img/omikuji3.png);
     background-size: contain;
     background-repeat: no-repeat;

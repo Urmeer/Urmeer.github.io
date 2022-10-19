@@ -19,6 +19,7 @@ sans-serif;
 background-size:cover;
 background-image:url(../img/meteors.png);
 background-attachment: fixed;
+overflow: hidden;
 }
 p{
 margin: 0;
