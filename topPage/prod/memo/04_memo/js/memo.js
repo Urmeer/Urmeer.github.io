@@ -11,6 +11,7 @@ window.addEventListener("DOMContentLoaded",
         } else {
             viewStorage();
             saveLocalStorage();
+            selectTable();
             choose();
             delete1();
         }
@@ -68,7 +69,6 @@ function choose() {
                     document.getElementById("textKey").value = document.getElementsByTagName("td")[3 * i + 1].innerHTML;
                     document.getElementById("textMemo").value = document.getElementsByTagName("td")[3 * i + 2].innerHTML;
                     temps=document.getElementsByTagName("td")[3 * i + 1].innerHTML;
-                    console.log(i);
                     tempi=i;
                     flag=1;
                 }
@@ -77,6 +77,29 @@ function choose() {
     }
 }
 
+function selectTable(){
+    const select=document.getElementById("select");
+    select.addEventListener("click",
+    function(e){
+        e.preventDefault();
+        selectRadioBtn();
+    },false
+    );
+}
+
+function selectRadioBtn(){
+    let w_sel="0";
+    const radio1=document.getElementsByName("radio1");
+    const table1=document.getElementById("table1");
+    for(let i=0;i<radio1.length;i++){
+        if(radio1[i].checked){
+            document.getElementById("textKey").value=table1.rows[i+1].cells[1].firstChild.data;
+            document.getElementById("textMemo").value=table1.rows[i+1].cells[2].firstChild.data;
+            return w_sel="1";
+        }
+    }
+    window.alert("一つ選択してください。")
+}
 
 function delete1() {
     let delete1 = document.getElementById("delete");

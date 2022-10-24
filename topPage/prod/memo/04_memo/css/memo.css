@@ -89,7 +89,7 @@ textarea::placeholder{
   margin-left:3em;
   text-align: left;
 }
-#save{
+#save,#delete,#select{
   margin: 1em;
   padding: 0.5em;
   border-radius: 0.3em;
@@ -97,15 +97,6 @@ textarea::placeholder{
   font-size: 1em;
   background: rgb(26, 212, 212);
   cursor: pointer; /*カーソルをポインターの形（かたち）にする*/
-}
-#delete{
-  margin: 1em;
-  padding: 0.5em;
-  border-radius: 0.3em;
-  color: whitesmoke;
-  font-size: 1em;
-  background: rgb(26, 212, 212);
-  cursor: pointer;
 }
 table{
     table-layout: fixed;
