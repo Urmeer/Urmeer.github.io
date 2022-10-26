@@ -89,7 +89,7 @@ textarea::placeholder{
   margin-left:3em;
   text-align: left;
 }
-#save,#delete,#select{
+#save,#delete,#select,#allClear{
   margin: 1em;
   padding: 0.5em;
   border-radius: 0.3em;
