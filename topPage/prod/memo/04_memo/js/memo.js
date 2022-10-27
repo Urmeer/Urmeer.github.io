@@ -27,7 +27,7 @@ function saveLocalStorage() {
                 window.alert("key,Memoは何れも必須です。");
                 return;
             } else {
-                let w_confirm=confirm("LocalStorageに「"+key+""+value+"」を保存しますか。");
+                let w_confirm=confirm("LocalStorageに「"+key+" "+value+"」を保存しますか。");
                 if(w_confirm===true){
                     localStorage.setItem(key, value);
                     viewStorage();
@@ -71,12 +71,12 @@ function selectTable(){
     select.addEventListener("click",
     function(e){
         e.preventDefault();
-        selectCheckBox();
+        selectCheckBox(0);
     },false
     );
 }
 
-function selectCheckBox(){
+function selectCheckBox(a){
     let w_sel="0";
     let w_cnt=0;
     const chkbox1=document.getElementsByName("chkbox1");
@@ -92,16 +92,19 @@ function selectCheckBox(){
             w_cnt++;
         }
     }
-    document.getElementById("textKey").value = w_textKey;
-    document.getElementById("textMemo").value = w_textMemo;
-    if(w_cnt===1){
-        w_sel="1";
-        document.getElementById("textKey").value = w_textKey;
-        document.getElementById("textMemo").value = w_textMemo;
-    }else{
-        window.alert("一つ選択してください。");
-    }
-   return w_sel;
+        if(w_cnt===1){
+            w_sel="1";
+            document.getElementById("textKey").value = w_textKey;
+            document.getElementById("textMemo").value = w_textMemo;
+        }else if(a===0){
+            window.alert("一つ選択してください。");
+            document.getElementById("textKey").value = "";
+            document.getElementById("textMemo").value = "";
+        }else if(a===1){
+            document.getElementById("textKey").value = "";
+            document.getElementById("textMemo").value = "";
+        }
+    return w_sel;  
 }
 
 function deleteStorage() {
@@ -110,9 +113,8 @@ function deleteStorage() {
         function(e) {
             e.preventDefault();
             let w_sel="0";
-            w_sel=selectCheckBox();
-            const key = document.getElementById("textKey").value;
-            const value = document.getElementById("textMemo").value;
+            w_sel=selectCheckBox(1);
+            let key = document.getElementById("textKey").value;
             const chkbox1=document.getElementsByName("chkbox1");
             const table1=document.getElementById("table1");
             console.log(w_sel);
@@ -125,21 +127,21 @@ function deleteStorage() {
                     window.alert(w_msg);
                     document.getElementById("textKey").value = "";
                     document.getElementById("textMemo").value = "";
-                }else if(w_cnt>1){
-                    let w_confirm=confirm("選択された項目を削除しますか。");
-                    if(w_confirm===true){
-                        for(let i=0;i<chkbox1.length;i++){
-                            if(chkbox1[i].checked){
-                                w_textKey=table1.rows[i+1].cells[1].firstChild.data;
-                                localStorage.removeItem(key);
-                            }
+                }
+            }else if(w_sel==="0"){
+                let w_confirm=confirm("選択された項目を削除しますか。");
+                if(w_confirm===true){
+                    for(let i=0;i<chkbox1.length;i++){
+                        if(chkbox1[i].checked){
+                            key=table1.rows[i+1].cells[1].firstChild.data;
+                            localStorage.removeItem(key);
                         }
-                        viewStorage();
-                        let w_msg="選択された項目は全て削除しました。";
-                        window.alert(w_msg);
-                        document.getElementById("textKey").value = "";
-                        document.getElementById("textMemo").value = "";
                     }
+                    viewStorage();
+                    let w_msg="選択された項目は全て削除しました。";
+                    window.alert(w_msg);
+                    document.getElementById("textKey").value = "";
+                    document.getElementById("textMemo").value = "";
                 }
             }
         },false
