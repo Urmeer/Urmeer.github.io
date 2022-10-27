@@ -1,8 +1,6 @@
 "use strict";
 
-let tempi;
-let temps;
-let flag=0;
+
 window.addEventListener("DOMContentLoaded",
     function() {
         if (typeof localStorage === "undefined") {
@@ -56,7 +54,7 @@ function viewStorage() {
         tr.appendChild(td1);
         tr.appendChild(td2);
         tr.appendChild(td3);
-        td1.innerHTML = "<input name='radio1' type='radio'>";
+        td1.innerHTML = "<input name='chkbox1' type='checkbox'>";
         td2.innerHTML = w_key;
         td3.innerHTML = localStorage.getItem(w_key);
     }
@@ -73,23 +71,37 @@ function selectTable(){
     select.addEventListener("click",
     function(e){
         e.preventDefault();
-        selectRadioBtn();
+        selectCheckBox();
     },false
     );
 }
 
-function selectRadioBtn(){
+function selectCheckBox(){
     let w_sel="0";
-    const radio1=document.getElementsByName("radio1");
+    let w_cnt=0;
+    const chkbox1=document.getElementsByName("chkbox1");
     const table1=document.getElementById("table1");
-    for(let i=0;i<radio1.length;i++){
-        if(radio1[i].checked){
-            document.getElementById("textKey").value=table1.rows[i+1].cells[1].firstChild.data;
-            document.getElementById("textMemo").value=table1.rows[i+1].cells[2].firstChild.data;
-            return w_sel="1";
+    let w_textKey="";
+    let w_textMemo="";
+    for(let i=0;i<chkbox1.length;i++){
+        if(chkbox1[i].checked){
+            if(w_cnt===0){
+                w_textKey=table1.rows[i+1].cells[1].firstChild.data;
+                w_textMemo=table1.rows[i+1].cells[2].firstChild.data;
+            }
+            w_cnt++;
         }
     }
-    window.alert("一つ選択してください。")
+    document.getElementById("textKey").value = w_textKey;
+    document.getElementById("textMemo").value = w_textMemo;
+    if(w_cnt===1){
+        w_sel="1";
+        document.getElementById("textKey").value = w_textKey;
+        document.getElementById("textMemo").value = w_textMemo;
+    }else{
+        window.alert("一つ選択してください。");
+    }
+   return w_sel;
 }
 
 function deleteStorage() {
@@ -98,10 +110,13 @@ function deleteStorage() {
         function(e) {
             e.preventDefault();
             let w_sel="0";
-            w_sel=selectRadioBtn();
+            w_sel=selectCheckBox();
+            const key = document.getElementById("textKey").value;
+            const value = document.getElementById("textMemo").value;
+            const chkbox1=document.getElementsByName("chkbox1");
+            const table1=document.getElementById("table1");
+            console.log(w_sel);
             if(w_sel==="1"){
-                const key = document.getElementById("textKey").value;
-                const value = document.getElementById("textMemo").value;
                 let w_confirm=confirm("LocalStorageに「"+key+""+value+"」を削除しますか。");
                 if(w_confirm===true){
                     localStorage.removeItem(key);
@@ -110,6 +125,21 @@ function deleteStorage() {
                     window.alert(w_msg);
                     document.getElementById("textKey").value = "";
                     document.getElementById("textMemo").value = "";
+                }else if(w_cnt>1){
+                    let w_confirm=confirm("選択された項目を削除しますか。");
+                    if(w_confirm===true){
+                        for(let i=0;i<chkbox1.length;i++){
+                            if(chkbox1[i].checked){
+                                w_textKey=table1.rows[i+1].cells[1].firstChild.data;
+                                localStorage.removeItem(key);
+                            }
+                        }
+                        viewStorage();
+                        let w_msg="選択された項目は全て削除しました。";
+                        window.alert(w_msg);
+                        document.getElementById("textKey").value = "";
+                        document.getElementById("textMemo").value = "";
+                    }
                 }
             }
         },false
