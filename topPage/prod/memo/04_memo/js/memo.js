@@ -24,18 +24,35 @@ function saveLocalStorage() {
             const key = document.getElementById("textKey").value;
             const value = document.getElementById("textMemo").value;
             if (key == "" || value == "") {
-                window.alert("key,Memoは何れも必須です。");
+                Swal.fire({
+                    title:"Memo app",
+                    html:"key,Memoは何れも必須です。",
+                    type:"error",
+                    allowOutsideClick:false
+                });
                 return;
             } else {
-                let w_confirm=confirm("LocalStorageに「"+key+" "+value+"」を保存しますか。");
-                if(w_confirm===true){
-                    localStorage.setItem(key, value);
-                    viewStorage();
-                    let w_msg = "LocalStorageに" + key + " " + value + "を保存しました。";
-                    window.alert(w_msg);
-                    document.getElementById("textKey").value = "";
-                    document.getElementById("textMemo").value = "";
-                }
+                let w_msg="LocalStorageに「"+key+" "+value+"」を保存しますか。";
+                Swal.fire({
+                    title:"Memo app",
+                    html:w_msg,
+                    type:"question",
+                    showCancelButton:true
+                }).then(function(result){
+                    if(result.value===true){
+                        localStorage.setItem(key, value);
+                        viewStorage();
+                        let w_msg = "LocalStorageに" + key + " " + value + "を保存しました。";
+                        Swal.fire({
+                            title:"Memo app",
+                            html:w_msg,
+                            type:"success",
+                            allowOutsideClick:false
+                        });                    
+                        document.getElementById("textKey").value = "";
+                        document.getElementById("textMemo").value = "";
+                    }
+                })
             }
         }, false
     )
@@ -76,8 +93,7 @@ function selectTable(){
     );
 }
 
-function selectCheckBox(a){
-    let w_sel="0";
+function selectCheckBox(mode){
     let w_cnt=0;
     const chkbox1=document.getElementsByName("chkbox1");
     const table1=document.getElementById("table1");
@@ -91,20 +107,18 @@ function selectCheckBox(a){
             }
             w_cnt++;
         }
-    }
+    }   
+        document.getElementById("textKey").value = w_textKey;
+        document.getElementById("textMemo").value = w_textMemo;
         if(w_cnt===1){
-            w_sel="1";
-            document.getElementById("textKey").value = w_textKey;
-            document.getElementById("textMemo").value = w_textMemo;
-        }else if(a===0){
-            window.alert("一つ選択してください。");
-            document.getElementById("textKey").value = "";
-            document.getElementById("textMemo").value = "";
-        }else if(a===1){
-            document.getElementById("textKey").value = "";
-            document.getElementById("textMemo").value = "";
+            return w_cnt;
         }
-    return w_sel;  
+        else if(mode==="del"&&w_cnt>=1){
+            return w_cnt;
+        }else {
+            window.alert("一つ選択してください。")
+        }
+   
 }
 
 function deleteStorage() {
@@ -112,33 +126,20 @@ function deleteStorage() {
     delete1.addEventListener("click",
         function(e) {
             e.preventDefault();
-            let w_sel="0";
-            w_sel=selectCheckBox(1);
-            let key = document.getElementById("textKey").value;
+            let w_cnt=0;
+            w_cnt=selectCheckBox("del");
             const chkbox1=document.getElementsByName("chkbox1");
             const table1=document.getElementById("table1");
-            console.log(w_sel);
-            if(w_sel==="1"){
-                let w_confirm=confirm("LocalStorageに「"+key+""+value+"」を削除しますか。");
-                if(w_confirm===true){
-                    localStorage.removeItem(key);
-                    viewStorage();
-                    let w_msg="LocalStorageから"+key+" "+value+"を削除しました。";
-                    window.alert(w_msg);
-                    document.getElementById("textKey").value = "";
-                    document.getElementById("textMemo").value = "";
-                }
-            }else if(w_sel==="0"){
-                let w_confirm=confirm("選択された項目を削除しますか。");
+            if(w_cnt>="1"){
+                let w_confirm=confirm("LocalStorageから選択されている"+w_cnt+"件を削除しますか。");
                 if(w_confirm===true){
                     for(let i=0;i<chkbox1.length;i++){
-                        if(chkbox1[i].checked){
-                            key=table1.rows[i+1].cells[1].firstChild.data;
-                            localStorage.removeItem(key);
-                        }
+                        if(chkbox1[i].checked){ 
+                        localStorage.removeItem(table1.rows[i+1].cells[1].firstChild.data);
+                        }   
                     }
                     viewStorage();
-                    let w_msg="選択された項目は全て削除しました。";
+                    let w_msg="LocalStorageから"+w_cnt+"件を削除しました。";
                     window.alert(w_msg);
                     document.getElementById("textKey").value = "";
                     document.getElementById("textMemo").value = "";
