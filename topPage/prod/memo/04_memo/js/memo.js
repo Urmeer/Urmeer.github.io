@@ -116,7 +116,12 @@ function selectCheckBox(mode){
         else if(mode==="del"&&w_cnt>=1){
             return w_cnt;
         }else {
-            window.alert("一つ選択してください。")
+            Swal.fire({
+                title:"Memo app",
+                html:"一つ選択してください。",
+                type:"error",
+                allowOutsideClick:false
+            });
         }
    
 }
@@ -131,19 +136,32 @@ function deleteStorage() {
             const chkbox1=document.getElementsByName("chkbox1");
             const table1=document.getElementById("table1");
             if(w_cnt>="1"){
-                let w_confirm=confirm("LocalStorageから選択されている"+w_cnt+"件を削除しますか。");
-                if(w_confirm===true){
-                    for(let i=0;i<chkbox1.length;i++){
-                        if(chkbox1[i].checked){ 
-                        localStorage.removeItem(table1.rows[i+1].cells[1].firstChild.data);
-                        }   
-                    }
-                    viewStorage();
-                    let w_msg="LocalStorageから"+w_cnt+"件を削除しました。";
-                    window.alert(w_msg);
-                    document.getElementById("textKey").value = "";
-                    document.getElementById("textMemo").value = "";
-                }
+                let w_msg="LocalStorageから選択されている"+w_cnt+"件を削除しますか。";
+                Swal.fire({
+                    title:"Memo app",
+                    html:w_msg,
+                    type:"question",
+                    showCancelButton:true
+                }).then(function(result){
+                        if(result.value===true){
+                            for(let i=0;i<chkbox1.length;i++){
+                                if(chkbox1[i].checked){ 
+                                localStorage.removeItem(table1.rows[i+1].cells[1].firstChild.data);
+                                }   
+                            }
+                            viewStorage();
+                            let w_msg="LocalStorageから"+w_cnt+"件を削除しました。";
+                            Swal.fire({
+                                title:"Memo app",
+                                html:w_msg,
+                                type:"success",
+                                allowOutsideClick:false
+                            });
+                            document.getElementById("textKey").value = "";
+                            document.getElementById("textMemo").value = ""; 
+                        }
+                    }    
+                )                      
             }
         },false
     );
@@ -152,18 +170,31 @@ function deleteStorage() {
 function allClearLocalStorage(){
     let allClear=document.getElementById("allClear");
     allClear.addEventListener("click",
-    function(e){
-        e.preventDefault();
-        let w_confirm=confirm("LocalStorageのデータをすべて削除します。\r\nよろしいですか。");
-        if(w_confirm===true){
-            localStorage.clear();
-            viewStorage();
-            let w_msg="LocalStorageのデータを全て削除しました。"
-            window.alert(w_msg);
-            document.getElementById("textKey").value = "";
-            document.getElementById("textMemo").value = "";
+        function(e){
+            e.preventDefault();
+            let w_msg="LocalStorageのデータをすべて削除します。\r\nよろしいですか。";
+            Swal.fire({
+                title:"Memo app",
+                html:w_msg,
+                type:"question",
+                showCancelButton:true
+            }).then(function(result){
+                    if(result.value===true){
+                        localStorage.clear();
+                        viewStorage();
+                        let w_msg="LocalStorageのデータを全て削除しました。"
+                        Swal.fire({
+                            title:"Memo app",
+                            html:w_msg,
+                            type:"success",
+                            allowOutsideClick:false
+                        });
+                        document.getElementById("textKey").value = "";
+                        document.getElementById("textMemo").value = "";
+                    }
+                }    
+            )                      
         }
-    }
     )
 }
 
