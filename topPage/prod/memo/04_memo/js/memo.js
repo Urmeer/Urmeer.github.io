@@ -63,17 +63,20 @@ function viewStorage() {
     while (list.rows[0]) list.deleteRow(0);
     for (let i = 0; i < localStorage.length; i++) {
         let w_key = localStorage.key(i);
-        const tr = document.createElement("tr");
-        const td1 = document.createElement("td");
-        const td2 = document.createElement("td");
-        const td3 = document.createElement("td");
+        let tr = document.createElement("tr");
+        let td1 = document.createElement("td");
+        let td2 = document.createElement("td");
+        let td3 = document.createElement("td");
+        let td4 = document.createElement("td");
         list.appendChild(tr);
         tr.appendChild(td1);
         tr.appendChild(td2);
         tr.appendChild(td3);
+        tr.appendChild(td4);
         td1.innerHTML = "<input name='chkbox1' type='checkbox'>";
         td2.innerHTML = w_key;
         td3.innerHTML = localStorage.getItem(w_key);
+        td4.innerHTML = "<img class='trash' src='./img/trash_icon.png'>";
     }
     $("#table1").tablesorter({
         sortList:[[1,0]]
@@ -118,7 +121,7 @@ function selectCheckBox(mode){
         }else {
             Swal.fire({
                 title:"Memo app",
-                html:"一つ選択してください。",
+                html:"一つ以上を選択してください。",
                 type:"error",
                 allowOutsideClick:false
             });
@@ -165,6 +168,13 @@ function deleteStorage() {
             }
         },false
     );
+    const table1 =document.getElementById("table1");
+    table1.addEventListener("click",(e) =>{
+        if(td.contains("trash")===true){
+            let tr=th;
+            tr.parentNode.deleteRow(tr.sectionRowIndex);
+        }
+    })
 }
 
 function allClearLocalStorage(){
