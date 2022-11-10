@@ -170,8 +170,9 @@ function deleteStorage() {
     );
     const table1 =document.getElementById("table1");
     table1.addEventListener("click",(e) =>{
-        if(td.contains("trash")===true){
-            let tr=th;
+        if(e.target.classList.contains("trash")===true){
+            let tr=e.target.parentNode.parentNode;
+            localStorage.removeItem(table1.rows[tr.sectionRowIndex+1].cells[1].firstChild.data);
             tr.parentNode.deleteRow(tr.sectionRowIndex);
         }
     })
