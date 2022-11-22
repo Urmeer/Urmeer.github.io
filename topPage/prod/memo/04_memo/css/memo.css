@@ -130,6 +130,65 @@ table tr{
 .width60{
     width:60%
 }
+.t1{
+    animation:rubberBand;
+    animation-duration: 1s;
+    background:url(../img/error.jpg) !important;
+}
+#swal2-content{
+    font-size: 15px;
+    font-weight: bold;
+    font-family:"ＭＳ ゴシック";
+}
+.t1 #swal2-content{
+    color: #c44;
+}
+.t1 #swal2-title{
+    color: #c44;
+    animation:heartBeat;
+    animation-duration: 2s;
+    font-size: 30px;
+}
+.swal2-icon.swal2-error{
+    animation:flip;
+    animation-duration: 2s;
+}
+.t2{
+    animation:fadeInUp;
+    animation-duration: 1s;
+    background:url(../img/question.jpg) !important;
+}
+.t2 #swal2-content{
+    color: #464ff7;
+}
+.t2 #swal2-title{
+    color: #464ff7;
+    animation:pulse;
+    animation-duration: 2s;
+    font-size: 30px;
+}
+.swal2-icon.swal2-question{
+    animation:wobble;
+    animation-duration: 2s;
+}
+.t3{
+    animation:fadeInLeft;
+    animation-duration: 1s;
+    background:url(../img/success.jpg) !important;
+}
+.t3 #swal2-content{
+    color:green;
+}
+.t3 #swal2-title{
+    color:green;
+    animation:zoomIn;
+    animation-duration: 2s;
+    font-size: 30px;
+}
+.swal2-icon.swal2-success{
+    animation:flash;
+    animation-duration: 2s;
+}
 
 /********************************************************/
 /* レスポンシブ対応　メディアクエリを使ってCSSを切り替える */
