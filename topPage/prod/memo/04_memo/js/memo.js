@@ -30,11 +30,13 @@ function saveLocalStorage() {
                     type:"error",
                     animation:false,
                     customClass:'t1',
-                    confirmButtonClass:'b1',
                     allowOutsideClick:false,
-                });
+                }).then(function(result){
+                    if(result.value===true){
+                    new Audio(wSound[0]).play();
+                    }
+                    });    
                 new Audio(wSound[3]).play();
-                
                 return;
             } else {
                 let w_msg="LocalStorageに「"+key+" "+value+"」を保存しますか。";
@@ -47,6 +49,7 @@ function saveLocalStorage() {
                     showCancelButton:true
                 }).then(function(result){
                     if(result.value===true){
+                        new Audio(wSound[0]).play();
                         localStorage.setItem(key, value);
                         viewStorage();
                         let w_msg = "LocalStorageに" + key + " " + value + "を保存しました。";
@@ -57,10 +60,16 @@ function saveLocalStorage() {
                             animation:false,
                             customClass:'t3',
                             allowOutsideClick:false
-                        });
+                        }).then(function(result){
+                            if(result.value===true){
+                            new Audio(wSound[0]).play();
+                            }
+                            }); 
                         new Audio(wSound[1]).play();   
                         document.getElementById("textKey").value = "";
                         document.getElementById("textMemo").value = "";
+                    }else{
+                        new Audio(wSound[2]).play();
                     }
                 })
             }
@@ -114,6 +123,7 @@ function selectCheckBox(mode){
     let w_textMemo="";
     for(let i=0;i<chkbox1.length;i++){
         if(chkbox1[i].checked){
+            new Audio(wSound[0]).play();
             if(w_cnt===0){
                 w_textKey=table1.rows[i+1].cells[1].firstChild.data;
                 w_textMemo=table1.rows[i+1].cells[2].firstChild.data;
@@ -126,9 +136,7 @@ function selectCheckBox(mode){
         if(w_cnt===1){
             return w_cnt;
         }
-        else if(mode==="del"&&w_cnt>=1){
-            return w_cnt;
-        }else {
+        else if(mode==="del"){
             Swal.fire({
                 title:"Error",
                 html:"一つ以上を選択してください。",
@@ -136,7 +144,28 @@ function selectCheckBox(mode){
                 animation:false,
                 customClass:'t1',
                 allowOutsideClick:false
-            });
+            }).then(function(result){
+                if(result.value===true){
+                new Audio(wSound[0]).play();
+                }
+                });    
+            new Audio(wSound[3]).play();
+            return w_cnt;
+        }else {
+            Swal.fire({
+                title:"Error",
+                html:"一つを選択してください。",
+                type:"error",
+                animation:false,
+                customClass:'t1',
+                allowOutsideClick:false
+            }).then(function(result){
+                if(result.value===true){
+                new Audio(wSound[0]).play();
+                }
+                });    
+            new Audio(wSound[3]).play();
+            return;
         }
    
 }
@@ -146,6 +175,7 @@ function deleteStorage() {
     delete1.addEventListener("click",
         function(e) {
             e.preventDefault();
+            new Audio(wSound[0]).play();
             let w_cnt=0;
             w_cnt=selectCheckBox("del");
             const chkbox1=document.getElementsByName("chkbox1");
@@ -161,6 +191,7 @@ function deleteStorage() {
                     showCancelButton:true
                 }).then(function(result){
                         if(result.value===true){
+                            new Audio(wSound[0]).play();
                             for(let i=0;i<chkbox1.length;i++){
                                 if(chkbox1[i].checked){ 
                                 localStorage.removeItem(table1.rows[i+1].cells[1].firstChild.data);
@@ -175,9 +206,16 @@ function deleteStorage() {
                                 animation:false,
                                 customClass:'t3',
                                 allowOutsideClick:false
-                            });
+                            }).then(function(result){
+                                if(result.value===true){
+                                new Audio(wSound[0]).play();
+                                }
+                                }); 
+                            new Audio(wSound[1]).play();  
                             document.getElementById("textKey").value = "";
                             document.getElementById("textMemo").value = ""; 
+                        }else{
+                            new Audio(wSound[2]).play();
                         }
                     }    
                 )                      
@@ -187,6 +225,7 @@ function deleteStorage() {
     const table1 =document.getElementById("table1");
     table1.addEventListener("click",(e) =>{
         if(e.target.classList.contains("trash")===true){
+            new Audio(wSound[0]).play();
             let w_msg="LocalStorageから選択されている1件を削除しますか。";
             Swal.fire({
                 title:"Question",
@@ -197,6 +236,7 @@ function deleteStorage() {
                 showCancelButton:true,
             }).then(function(result){
                     if(result.value===true){
+                        new Audio(wSound[0]).play();
                         let tr=e.target.parentNode.parentNode;
                         localStorage.removeItem(table1.rows[tr.sectionRowIndex+1].cells[1].firstChild.data);
                         tr.parentNode.deleteRow(tr.sectionRowIndex);
@@ -208,9 +248,16 @@ function deleteStorage() {
                             animation:false,
                             customClass:'t3',
                             allowOutsideClick:false
-                        });
+                        }).then(function(result){
+                            if(result.value===true){
+                            new Audio(wSound[0]).play();
+                            }
+                            }); 
+                        new Audio(wSound[1]).play();
                         document.getElementById("textKey").value = "";
                         document.getElementById("textMemo").value = ""; 
+                    }else{
+                        new Audio(wSound[2]).play();
                     }
                 }    
             )                      
@@ -224,6 +271,7 @@ function allClearLocalStorage(){
     allClear.addEventListener("click",
         function(e){
             e.preventDefault();
+            new Audio(wSound[0]).play();
             let w_msg="LocalStorageのデータをすべて削除します。\r\nよろしいですか。";
             Swal.fire({
                 title:"Question",
@@ -234,6 +282,7 @@ function allClearLocalStorage(){
                 showCancelButton:true,
             }).then(function(result){
                     if(result.value===true){
+                        new Audio(wSound[0]).play();
                         localStorage.clear();
                         viewStorage();
                         let w_msg="LocalStorageのデータを全て削除しました。"
@@ -244,9 +293,16 @@ function allClearLocalStorage(){
                             animation:false,
                             customClass:'t3',
                             allowOutsideClick:false,
-                        });
+                        }).then(function(result){
+                            if(result.value===true){
+                            new Audio(wSound[0]).play();
+                            }
+                            }); 
+                        new Audio(wSound[1]).play();
                         document.getElementById("textKey").value = "";
                         document.getElementById("textMemo").value = "";
+                    }else{
+                        new Audio(wSound[2]).play();
                     }
                 }    
             )                      
@@ -254,6 +310,3 @@ function allClearLocalStorage(){
     )
 }
 
-
-   
-   
