@@ -23,7 +23,6 @@ window.addEventListener("DOMContentLoaded",
             let popMessage = "いっらしゃい！おみくじ引いてって";
             window.alert(popMessage);
         },"7000");
-    
     }, false
 );
 let soundEndFlag="0";
