@@ -18,6 +18,8 @@ body{
     Meiryo,
     sans-serif;
     background: rgb(233,168,227);
+    background-image: url(../img/backgrond-pc.png);
+    background-attachment: fixed;
     overflow:hidden;
 }
 p{
@@ -26,11 +28,14 @@ p{
 }
 header{
     margin-top: 8px;
-    color: rgb(255,251,0);
     font-size:38px;
     font-weight: bold;
     text-align:center;
-    background: rgb(71,71,71);
+    background: linear-gradient(to right bottom,white,black,red);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: flash 3s forwards;
 }
 .wrapper{
     position:relative;
@@ -93,7 +98,7 @@ header{
     position: relative;
     width: calc(196px/3);
     height: calc(196px/3);
-    border: solid 2px #333;
+    border: solid 2px rgb(194, 194, 194);
 }
 .btn{
     margin-top: 8px;
@@ -101,13 +106,32 @@ header{
     border-radius:10px;
     color:whitesmoke;
     font-size: 24px;
-    background: rgb(26,212,212);
+    background: rgb(97, 97, 97);
     user-select:none;
     cursor:pointer;
 }
 .back{
     margin-top: 8px;
     text-align: left;
+}
+.text{
+    font-size:30px;
+    font-weight: bold;
+    text-align:center;
+    background: linear-gradient(to right bottom,white,black,red);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: heartBeat 2s forwards;
+}
+.text1{
+    color: white;
+}
+.text2{
+    color:black;
+}
+.image{
+    animation: tada 2s forwards;
 }
 #restart{
     background: rgb(0, 0, 0);
@@ -123,11 +147,13 @@ footer>p{
     background: rgba(1,24,31,0.7);
 }
 @media screen and (max-width:480px) {
+    body{
+        background-image: url(../img/background-mobile.png);
+    }
     .wrapper{
         padding-bottom: 23px;
     }
     .btn-container{
         padding-top: 2px;
     }
-    
 }
