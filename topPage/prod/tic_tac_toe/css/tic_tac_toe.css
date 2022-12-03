@@ -134,7 +134,16 @@ header{
     animation: tada 2s forwards;
 }
 #restart{
-    background: rgb(0, 0, 0);
+    font-size:20px;
+    background: linear-gradient(90deg,grey,rgb(49, 0, 0),black,white);
+    background-size:400%;
+    width:175px;
+    height:50px;
+    text-transform: uppercase;
+    border-radius: 50px;
+}
+#restart:hover{
+    animation: sun 8s infinite;
 }
 footer>p{
     position: absolute;
@@ -145,6 +154,12 @@ footer>p{
     font:16px Rajdhani;
     text-align: center;
     background: rgba(1,24,31,0.7);
+}
+
+@keyframes sun{
+    100%{
+        background-position: -400% 0;
+    }
 }
 @media screen and (max-width:480px) {
     body{

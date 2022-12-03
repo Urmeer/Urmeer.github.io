@@ -10,6 +10,7 @@ const restart=document.getElementById("restart");
 const msgtxt1='<p class="image"><img src="img/white.png" width=61px height=61px></p><p class=text>White Attack!</p>';
 const msgtxt2='<p class="image"><img src="img/black.png" width=61px height=61px></p><p class=text>Black Attack!</p>';
 const winCombos=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[6,4,2]];
+const image=['img/ParticleSmoke.png','img/star.png'];
 
 window.addEventListener("DOMContentLoaded",
     function() {
@@ -94,11 +95,12 @@ function checkWin(){
     for(let [,win]of winCombos.entries()){
         if(win.every(Element=>whiteStorage.indexOf(Element)>-1)){
             setMessage("white-win");
-            snowfall();
+            snowfall(0);
             gameOver();
         }
         if(win.every(Element=>blackStorage.indexOf(Element)>-1)){
             setMessage("black-win");
+            snowfall(1);
             gameOver();
         }
     } 
@@ -109,13 +111,14 @@ function gameOver(){
         square[i].classList.add("js-unclickable");
     }
 }
-function snowfall(){
+function snowfall(n){
     $(document).ready(function(){
     $(document).snowfall({
     maxSpeed :25, 
     minSpeed :1,
     maxSize :80,
     minSize :30, 
-    image:'img/ParticleSmoke.png'
+    image:image[n],
+   
     })})
 }
