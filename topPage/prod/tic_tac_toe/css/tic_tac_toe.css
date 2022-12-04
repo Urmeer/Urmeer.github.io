@@ -1,5 +1,4 @@
 @charset "utf-8";
-
 html{
     font-size:16px;
 }
@@ -17,7 +16,6 @@ body{
     "Hiragino Sans",
     Meiryo,
     sans-serif;
-    background: rgb(233,168,227);
     background-image: url(../img/backgrond-pc.png);
     background-attachment: fixed;
     overflow:hidden;
@@ -133,6 +131,7 @@ header{
 .image{
     animation: tada 2s forwards;
 }
+
 #restart{
     font-size:20px;
     background: linear-gradient(90deg,grey,rgb(49, 0, 0),black,white);
