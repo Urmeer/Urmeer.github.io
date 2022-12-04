@@ -7,10 +7,12 @@ let whiteStorage=new Array();
 let blackStorage=new Array();
 const square=document.getElementsByClassName("square");
 const restart=document.getElementById("restart");
+const menu=document.getElementById("menu");
 const msgtxt1='<p class="image"><img src="img/white.png" width=61px height=61px></p><p class=text>White Attack!</p>';
 const msgtxt2='<p class="image"><img src="img/black.png" width=61px height=61px></p><p class=text>Black Attack!</p>';
 const winCombos=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[6,4,2]];
 const image=['img/ParticleSmoke.png','img/star.png'];
+
 
 window.addEventListener("DOMContentLoaded",
     function() {
@@ -33,6 +35,18 @@ for(let i=0;i<square.length;i++){
 restart.addEventListener("click",()=>{
     newGame();
 })
+
+restart.addEventListener('click',e=>{
+    let span=document.createElement('span');
+    span.style.left=e.offsetX+'px';
+    span.style.top=e.offsetY+'px';
+    restart.appendChild(span);
+    setTimeout(function(){
+        span.remove();
+    },1000)
+})
+
+
 
 
 function isSelect(e){
@@ -122,3 +136,4 @@ function snowfall(n){
    
     })})
 }
+

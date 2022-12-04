@@ -99,17 +99,30 @@ header{
     border: solid 2px rgb(194, 194, 194);
 }
 .btn{
+    position: relative;
     margin-top: 8px;
     padding: 12px;
     border-radius:10px;
     color:whitesmoke;
     font-size: 24px;
-    background: rgb(97, 97, 97);
+    background: linear-gradient(90deg,grey,rgb(49, 0, 0),black);
     user-select:none;
     cursor:pointer;
+    overflow: hidden;
+}
+.btn span{
+    position: absolute;
+    width:30px;
+    height: 30px;
+    background-color: white;
+    transform:translate(-50%,-50%);
+    border-radius: 50%;
+    animation:anima 1s ease 1;
+    pointer-events: none;
 }
 .back{
     margin-top: 8px;
+    margin-left: 20px;
     text-align: left;
 }
 .text{
@@ -131,16 +144,23 @@ header{
 .image{
     animation: tada 2s forwards;
 }
-
+#menu{
+    position:relative;
+    margin-top: 8px;
+    margin-right: 125px;
+    text-align: right;
+    color: red;
+}
 #restart{
     font-size:20px;
-    background: linear-gradient(90deg,grey,rgb(49, 0, 0),black,white);
+    background: linear-gradient(90deg,grey,rgb(49, 0, 0),black ,white);
     background-size:400%;
     width:175px;
     height:50px;
     text-transform: uppercase;
     border-radius: 50px;
 }
+
 #restart:hover{
     animation: sun 8s infinite;
 }
@@ -154,7 +174,18 @@ footer>p{
     text-align: center;
     background: rgba(1,24,31,0.7);
 }
-
+@keyframes anima{
+    from{
+        width:0;
+        height: 0;
+        opacity:0.8;
+    }
+    to{
+        width:400px;
+        height: 400px;
+        opacity: 0;
+    }
+}
 @keyframes sun{
     100%{
         background-position: -400% 0;

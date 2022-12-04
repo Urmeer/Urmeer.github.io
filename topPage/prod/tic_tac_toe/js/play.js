@@ -189,7 +189,6 @@ function musicJump(){
             musicBOXbc.src = "head/" + musicList[i] + ".jpg";
             musicHead.src = "head/" + musicList[i] + ".jpg";
             nowtime = 0;
-            console.log(i);
             i++;
             if(i < 0 || i >= 1){
                 i = 0;
