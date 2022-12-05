@@ -34,6 +34,7 @@ header{
     -webkit-background-clip: text;
     color: transparent;
     animation: flash 3s forwards;
+    user-select: none;
 }
 .wrapper{
     position:relative;
@@ -45,13 +46,14 @@ header{
     text-align: center;
 }
 .game-container{
-    padding:40px 0;
+    padding:25px 0;
 }
 .message-container{
     margin-bottom: 15px;
     font-size: 2em;
     font-weight: bold;
     overflow: hidden;
+    user-select: none;
 }
 .js-hidden{
     display: none;
@@ -194,6 +196,7 @@ footer>p{
 @media screen and (max-width:480px) {
     body{
         background-image: url(../img/background-mobile.png);
+        background-attachment: fixed;
     }
     .wrapper{
         padding-bottom: 23px;
