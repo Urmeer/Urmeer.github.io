@@ -33,9 +33,10 @@ header{
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
-    animation: flash 3s forwards;
+    animation: flash 3s forwards ;
     user-select: none;
 }
+
 .wrapper{
     position:relative;
     max-width: 100vw;
