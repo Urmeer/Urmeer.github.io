@@ -16,10 +16,6 @@
     -moz-osx-font-smoothing: grayscale;
 }
   
-.icon-menu:before {
-    content: "\e64b";
-}
-  
 .icon-volumeDisable:before {
     content: "\ea0f";
 }
@@ -42,6 +38,9 @@
   
 .icon-24gf-pause2:before {
     content: "\ea81";
+}
+.menu{
+   font-size: 200px; 
 }
   
 .play_box{
@@ -111,7 +110,7 @@
 .play_box > .progress > .last,.next{
     width: 30px;
     height: 50px;
-    font-size: 20px;
+    font-size: 16px;
     line-height: 50px;
     text-align: center;
     background: linear-gradient(to right bottom,white,black);

@@ -32,7 +32,6 @@ let f2 = true;
 let i1 = 0;
 let nowtime = 0;
 let currtime = 0;
-musicOBJ.loop=true;
 
 function musicPlaySet(){
     stateSet.onclick = function(){
@@ -64,14 +63,6 @@ function musicTime(){
         let currsecond = Math.floor(muscurrtime % 60) + "";
         currsecond = currsecond < 10 ? "0" + currsecond : currsecond; 
         timeshow.innerText = `${currminute}:${currsecond} / ${minute}:${second}`;
-        if(currminute==minute&&currsecond==second){
-            proLine.style.width = "0px";
-            nowtime = 0;
-            clearInterval(time);
-            clearInterval(time2);
-            clearInterval(time3);
-            clearInterval(time4);
-        } 
     }, 1);
     time2 = setInterval(() => {
         let movetime = 330 / time;
@@ -118,9 +109,9 @@ function musicListen(){
             nowtime = 0;
             clearInterval(time);
             clearInterval(time2);
-            clearInterval(time3);
             clearInterval(time4);
-            f1 = false;
+            musicloop();
+            f1 = false; 
         }
     }, 1000);
 }
@@ -207,4 +198,13 @@ function musicStop(){
     f1 = false;
 }
 
-
+function musicloop(){
+    stateSet.className = "state_set iconfont icon-24gf-pause2";
+    musicOBJ.play();
+    musicTime();
+    time = setInterval(() => {
+    i1++;
+    musicHead.style.transform = `rotate(${i1}deg)`;
+    }, 20);
+    f1 = true;
+}
