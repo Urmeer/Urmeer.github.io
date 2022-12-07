@@ -60,7 +60,7 @@ header{
     display: none;
 }
 .js-white-checked::before{
-    position: absolute;
+    position:absolute;
     top:0;
     left: 0;
     width: 61px;
