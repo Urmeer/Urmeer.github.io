@@ -1,52 +1,58 @@
-
 @font-face {
-    font-family: "iconfont"; /* Project id 3172555 */
-    src: url('//at.alicdn.com/t/font_3172555_a0penuv1rwh.woff2?t=1644379067651') format('woff2'),
-         url('//at.alicdn.com/t/font_3172555_a0penuv1rwh.woff?t=1644379067651') format('woff'),
-         url('//at.alicdn.com/t/font_3172555_a0penuv1rwh.ttf?t=1644379067651') format('truetype'),
-         url('iconfont.ttf?t=1670217566840') format('truetype'); 
-}
-
+    font-family: "iconfont"; /* Project id 3808867 */
+    src: url('iconfont.woff2?t=1670290202128') format('woff2'),
+         url('iconfont.woff?t=1670290202128') format('woff'),
+         url('iconfont.ttf?t=1670290202128') format('truetype');
+  }
   
-.iconfont {
+  .iconfont {
     font-family: "iconfont" !important;
     font-size: 16px;
     font-style: normal;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-}
+  }
   
-.icon-volumeDisable:before {
-    content: "\ea0f";
-}
+  .icon-24gl-volumeDisable:before {
+    content: "\ea0c";
+  }
   
-.icon-volumeMiddle:before {
-    content: "\ea11";
-}
+  .icon-24gl-volumeMiddle:before {
+    content: "\ea0d";
+  }
   
-.icon-shangyishou:before {
-    content: "\e61e";
-}
+  .icon-24gl-pause2:before {
+    content: "\ea6d";
+  }
   
-.icon-xiayishou:before {
-    content: "\e61f";
-}
+  .icon-24gl-play:before {
+    content: "\ea6e";
+  }
   
-.icon-bofang:before {
-    content: "\e87c";
-}
+  .icon-danquxunhuan1:before {
+    content: "\e607";
+  }
   
-.icon-24gf-pause2:before {
-    content: "\ea81";
-}
-.menu{
-   font-size: 200px; 
-}
+  .icon-xunhuan:before {
+    content: "\e7b1";
+  }
+  
+  .icon-shangyishou:before {
+    content: "\e600";
+  }
+  
+  .icon-kuaijin:before {
+    content: "\e601";
+  }
+  
+  .icon-menu:before {
+    content: "\e64b";
+  }
   
 .play_box{
     width:500px;
     height: 50px;
-    position: absolute;
+    position:absolute;
     top: 80%;
     left: 50%;
     transform: translate(-50%,-50%);
@@ -91,7 +97,7 @@
     left: 50%;
     transform: translate(-50%,-50%);
     z-index: 10;
-    background: linear-gradient(to right bottom,white,black);
+    background: white;
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
@@ -113,7 +119,7 @@
     font-size: 16px;
     line-height: 50px;
     text-align: center;
-    background: linear-gradient(to right bottom,white,black);
+    background: white;
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
@@ -136,7 +142,7 @@
 .play_box > .progress > .line > .pros{
     width: 0px;
     height: 6px;
-    background: linear-gradient(to left,white,black);
+    background: linear-gradient(to left,black,white);
     border-radius: 10px;
     position: absolute;
     top: 50%;
