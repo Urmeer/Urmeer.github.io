@@ -133,7 +133,6 @@ function snowfall(n){
     maxSize :80,
     minSize :30, 
     image:image[n],
-   
     })})
 }
 
