@@ -162,6 +162,7 @@ header{
     height:50px;
     text-transform: uppercase;
     border-radius: 50px;
+    z-index: 999;
 }
 
 #restart:hover{
