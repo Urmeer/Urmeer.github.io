@@ -56,6 +56,25 @@ header{
     overflow: hidden;
     user-select: none;
 }
+.squares-container{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    width: 200px;
+}
+.squares-box{
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-wrap: wrap;
+    border: solid 2px #333;
+}
+.square{
+    position: relative;
+    width: calc(196px/3);
+    height: calc(196px/3);
+    border: solid 2px rgb(194, 194, 194);
+}
 .js-hidden{
     display: none;
 }
@@ -82,24 +101,11 @@ header{
 .js-unclickable{
     pointer-events: none;
 }
-.squares-container{
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0 auto;
-    width: 200px;
+.js-white_highLight{
+    border: solid 2px rgb(180, 68, 68);
 }
-.squares-box{
-    width: 200px;
-    height: 200px;
-    display: flex;
-    flex-wrap: wrap;
-    border: solid 2px #333;
-}
-.square{
-    position: relative;
-    width: calc(196px/3);
-    height: calc(196px/3);
-    border: solid 2px rgb(194, 194, 194);
+.js-black_highLight{
+    border: solid 2px rgb(10, 21, 103);
 }
 .btn{
     position: relative;
