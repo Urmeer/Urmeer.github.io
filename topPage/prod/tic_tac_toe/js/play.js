@@ -38,7 +38,7 @@ function musicPlaySet(){
         if(f1){
             musicStop();
         }else{
-            stateSet.className = "state_set iconfont icon-24gl-pause2";
+            stateSet.className = "state_set iconfont icon-24gf-pause2";
             musicOBJ.play();
             musicTime();
             time = setInterval(() => {
@@ -92,7 +92,7 @@ function musicMove(){
         nowtime = currtime * (330 / musicOBJ.duration);
         musicTime();
         musicOBJ.play();
-        stateSet.className = "state_set iconfont icon-24gl-pause2";
+        stateSet.className = "state_set iconfont icon-24gf-pause2";
         time = setInterval(() => {
             i1++;
             musicHead.style.transform = `rotate(${i1}deg)`;
@@ -105,7 +105,7 @@ function musicListen(){
     time3 = setInterval(() => {
         if(musicOBJ.ended){
             proLine.style.width = "0px";
-            stateSet.className = "state_set iconfont icon-24gl-play";
+            stateSet.className = "state_set iconfont icon-bofang";
             nowtime = 0;
             clearInterval(time);
             clearInterval(time2);
@@ -129,12 +129,12 @@ function volumeSet(){
         volumeBtn.onclick = function(){
             if(f2){
                 volumePro.disabled = true;
-                volumeBtn.className = "volume iconfont icon-24gl-volumeDisable";
+                volumeBtn.className = "volume iconfont icon-volumeDisable";
                 musicOBJ.muted = true;
                 f2 = false;
             }else{
                 volumePro.disabled = false;
-                volumeBtn.className = "volume iconfont icon-24gl-volumeMiddle";
+                volumeBtn.className = "volume iconfont icon-volumeMiddle";
                 musicOBJ.muted = false;
                 f2 = true;
             }
@@ -151,7 +151,7 @@ function volumeSet(){
             musicOBJ.volume = this.value / 100;
             console.log(this.value);
             if(this.value === 0){
-                volumeBtn.className = "volume iconfont icon-24gl-volumeDisable";
+                volumeBtn.className = "volume iconfont icon-volumeDisable";
                 f2 = false;
             }
         }
@@ -190,7 +190,7 @@ function musicJump(){
 }
 
 function musicStop(){
-    stateSet.className = "state_set iconfont icon-24gl-play";
+    stateSet.className = "state_set iconfont icon-bofang";
     musicOBJ.pause();
     clearInterval(time);
     clearInterval(time2);
@@ -199,7 +199,7 @@ function musicStop(){
 }
 
 function musicloop(){
-    stateSet.className = "state_set iconfont icon-24gl-pause2";
+    stateSet.className = "state_set iconfont icon-24gf-pause2";
     musicOBJ.play();
     musicTime();
     time = setInterval(() => {
