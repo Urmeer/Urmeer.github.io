@@ -6,6 +6,8 @@ let valueStorage=new Array(9);
 let whiteStorage=new Array();
 let blackStorage=new Array();
 let lineStorage=new Array();
+let n;
+let randomStorage=[0,1,2,3,4,5,6,7,8];
 const square=document.getElementsByClassName("square");
 const restart=document.getElementById("restart");
 const menu=document.getElementById("menu");
@@ -25,9 +27,8 @@ window.addEventListener("DOMContentLoaded",
 
 for(let i=0;i<square.length;i++){
     square[i].addEventListener("click",()=>{
-        isSelect(square[i],0);
+        isSelect(square[i],1,i);
         valueCheck(square,i);
-        
         checkWin();
         if(counter==0&&flag!=2){
             setMessage("draw");
@@ -50,7 +51,7 @@ restart.addEventListener('click',e=>{
     },1000)
 })
 
-function isSelect(e,mode){
+function isSelect(e,mode,i){
     if(mode==0){
         if (flag===0){
             new Audio(wSound[0]).play();
@@ -72,7 +73,8 @@ function isSelect(e,mode){
         e.classList.add("js-white-checked","js-unclickable");
         e.setAttribute('value',0);
         setMessage("black-turn");
-
+        computer(1,i);
+        counter--;
     }
 }
 
@@ -105,7 +107,7 @@ function newGame(){
     blackStorage=new Array();
     lineStorage=new Array();
     valueStorage=new Array(9);
-    randomStorage=new Array();
+    randomStorage=[0,1,2,3,4,5,6,7,8];
     setMessage("white-turn");
     $(document).snowfall("clear");
 }
@@ -164,18 +166,26 @@ function snowfall(n){
     })
 }
 
-function computer(square,mode){
+function computer(mode,i){
     if(mode==1){
-        for(let [n]of square.entries()){
-            if(square[n].getAttribute('value')==0);
+        if(square[i].getAttribute('value')==0){
+            randomStorage.splice(i,1);
         }
-        let n=Math.floor(Math.random()*randomStorage.length);
-        new Audio(wSound[1]).play();
-        square[randomStorage[n]].classList.add("js-black-checked","js-unclickable");
-        square[randomStorage[n]].setAttribute('value',1);
-        setMessage("white-turn");
-        flag=0;
-        console.log(randomStorage);
-        console.log(randomStorage.length);
+        n=Math.floor(Math.random()*randomStorage.length);
+        while(true){
+            if(square[n].getAttribute('value')==null){
+                new Audio(wSound[1]).play();
+                square[randomStorage[n]].classList.add("js-black-checked","js-unclickable");
+                square[randomStorage[n]].setAttribute('value',1);
+                setMessage("white-turn");
+                randomStorage.splice(i,1);
+                return;
+            }else{
+                n=Math.floor(Math.random()*randomStorage.length);
+            }
+        }
     }
 }
+console.log(randomStorage);
+        console.log(randomStorage[n]);
+        console.log(n);
