@@ -14,10 +14,15 @@
 <body>
     <div class ="back">
         <button id="btn99" class="btn" onclick="window.location.href=document.referrer">back</button>
+        <section class="model-1">
+            <div class="checkbox" onclick="modeChange()">
+                <input type="checkbox"/ id="check">
+                <label>PVPPVE</label>
+            </div>
+        </section>
     </div>
     <div class="wrapper">
         <header>Tic Tac Toe</header>
-        <div class="menu iconfont icon-menu" id="menu"></div>
         <div class="game-container">
             <div class="message-container">
                 <div id="msgtext"></div>
@@ -36,7 +41,14 @@
                 </div>
             </div>
         </div>
-        <button id="restart" class="btn">restart</button>
+        <div id="PVE" style="display: none;">
+            <div id="tag1">難易度選択:</div>
+            <label class="radio1"><input type="radio" name="input_" value="nomal">nomal</label>
+            <label class="radio2"><input type="radio" name="input_" value="hard">hard</label>
+        </div>
+        <div>
+            <button id="restart" class="btn">restart</button>
+        </div>
         <audio src="music/Reprologue.mp3"></audio>
         <div class="play_box">
             <div class="play_bc">

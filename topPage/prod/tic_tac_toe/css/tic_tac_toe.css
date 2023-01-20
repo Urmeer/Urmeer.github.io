@@ -153,12 +153,85 @@ header{
 .image{
     animation: tada 2s forwards;
 }
-#menu{
-    position:relative;
-    margin-top: 8px;
-    margin-right: 125px;
-    text-align: right;
-    color: black;
+section {
+    float:right;
+    width: 140px;
+    padding-top:30px;
+    height: 35px;
+  }
+   
+  .checkbox {
+    position: relative;
+    display: inline-block;    
+  }
+   
+  .checkbox label {
+    font-size:20px;
+    text-align: center;
+    padding-top: 5px;
+    width: 90px;
+    height: 30px;
+    position: relative;
+    display: inline-block;
+    border-radius: 46px;        
+    -webkit-transition: 0.4s;   
+    transition: 0.4s;
+    background: #f2f2f2;
+  }
+  .checkbox label:after {    
+    content: '';
+    position: absolute;
+    padding-top: 20px;
+    width: 45px;
+    height: 40px;
+    border-radius: 40%;
+    left: 0;                
+    top: -5px;
+    z-index: 2;       
+    background: #f2f2f2;   
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);   
+    -webkit-transition: 0.4s;  
+    transition: 0.4s;
+  }
+  .checkbox input {
+    position: absolute;
+    left: 30;
+    top: 0;
+    width: 100%;      
+    height: 100%;
+    z-index: 5;       
+    opacity: 0;      
+    cursor: pointer;  
+  }
+   
+  .checkbox input:hover + label:after {
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.2), 0 3px 8px 0 rgba(0, 0, 0, 0.2);
+  }
+  .checkbox input:checked + label:after {
+    left: 45px;                    
+  
+  }
+  .model-1 .checkbox input:checked + label {
+    background:#eaa031;          
+}       
+  .model-1 .checkbox input:checked + label:after {
+    background:#eac531;          
+  }
+.radio1{
+    font-size: 15px;
+    text-align: center;
+    color: rgb(0, 208, 236);
+}
+.radio2{
+    font-size: 15px;
+    text-align: center;
+    color: red;
+}
+#tag1{
+    color:rgb(96, 48, 48);
+    font-weight: bold;
+    font-size: 25px;
+    text-align: center;
 }
 #restart{
     font-size:20px;
@@ -215,4 +288,10 @@ footer>p{
         transform: scale(0.8);
         margin-left: -30px;
     }
+    section {
+        float:right;
+        width: 70px;
+        padding-top:30px;
+        height: 35px;
+      }
 }
